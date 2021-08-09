@@ -2,33 +2,35 @@
   <div class="container">
     <div>
       <Logo />
-      <h1 class="title">nuxt-eslint-typescript-example</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+      <h1 class="title">Hello, typescript</h1>
+      <h2>Command Line</h2>
+      <div class="links">{{ getNumber() }}</div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { Vue, Component } from 'nuxt-property-decorator';
+import Logo from '~/components/Logo.vue';
 
-export default Vue.extend({})
+@Component({
+  components: {
+    Logo,
+  },
+})
+export default class index extends Vue {
+  something: string = 'hi';
+  num1: number = 3;
+  num2: number = 5;
+
+  getNumber(): number {
+    return 5;
+  }
+
+  get sumNumber() {
+    return this.num1 + this.num2;
+  }
+}
 </script>
 
 <style>
